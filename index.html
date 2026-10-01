@@ -10,25 +10,25 @@
 
 /* Variáveis de Tema Dinâmico - Gradientes Elegantes e Alta Legibilidade */
 :root {
-  /* Tema Visão Geral (Neutro Executivo) */
-  --bg: #0A0E17;
-  --bg-gradient: linear-gradient(135deg, #0A0E17 0%, #111827 50%, #0F172A 100%);
-  --panel-bg: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-  --panel-card: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(20, 30, 48, 0.95) 100%);
-  --stroke: #334155;
-  --stroke-soft: #1E293B;
+  /* Tema Wyden Marca Oficial */
+  --bg: #0F0811;
+  --bg-gradient: linear-gradient(135deg, #0F0811 0%, #1B0C1E 50%, #120815 100%);
+  --panel-bg: linear-gradient(145deg, rgba(42, 18, 46, 0.75) 0%, rgba(22, 10, 25, 0.85) 100%);
+  --panel-card: linear-gradient(135deg, rgba(50, 22, 54, 0.9) 0%, rgba(28, 12, 30, 0.95) 100%);
+  --stroke: #522454;
+  --stroke-soft: #301432;
   --text: #F8FAFC;
-  --text-dim: #94A3B8;
-  --text-faint: #64748B;
-  --brand-primary: #38BDF8;
-  --brand-primary-grad: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
-  --brand-secondary: #818CF8;
-  --brand-secondary-grad: linear-gradient(135deg, #818CF8 0%, #4F46E5 100%);
-  --brand-accent: #F59E0B;
+  --text-dim: #C4B5FD;
+  --text-faint: #8B789C;
+  --brand-primary: #E31C23;
+  --brand-primary-grad: linear-gradient(135deg, #E31C23 0%, #B81419 100%);
+  --brand-secondary: #A3125B;
+  --brand-secondary-grad: linear-gradient(135deg, #C2186C 0%, #7A0C42 100%);
+  --brand-accent: #FAA61A;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
-  --glow: rgba(56,189,248,0.15);
+  --glow: rgba(227, 28, 35, 0.25);
 }
 
 /* Tema Oficial Estácio — Gradiente Ciano Vibrante Premium */
@@ -315,22 +315,34 @@ footer.foot p{font-size:11.5px; color:var(--text-faint); font-family:var(--font-
 
 /* Estilização de Alto Destaque para as Perguntas do Formulário */
 .th-title {
-  display: block; font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px;
+  display: block; font-family: var(--font-display); font-size: 13.5px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px;
 }
 .th-question {
-  display: block; font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--brand-primary); margin-top: 4px; text-transform: none; background: rgba(255,255,255,0.06); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--stroke-soft); white-space: normal; line-height: 1.3;
+  display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--brand-primary); margin-top: 6px; text-transform: none; background: rgba(255,255,255,0.08); padding: 5px 10px; border-radius: 8px; border: 1px solid var(--stroke-soft); white-space: normal; line-height: 1.4;
 }
 .modal-q-card {
-  background: var(--panel-card); border: 1px solid var(--stroke); padding: 16px 18px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: var(--panel-card); border: 1px solid var(--stroke); padding: 18px 20px; border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
 .modal-q-header {
-  font-family: var(--font-mono); font-size: 11px; color: var(--brand-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--brand-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
 }
 .modal-q-title {
-  font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #FFFFFF; background: linear-gradient(90deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%); padding: 10px 14px; border-radius: 8px; border-left: 4px solid var(--brand-primary); margin-bottom: 10px; line-height: 1.4;
+  font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #FFFFFF; background: linear-gradient(90deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 100%); padding: 12px 16px; border-radius: 10px; border-left: 5px solid var(--brand-primary); margin-bottom: 12px; line-height: 1.45;
 }
 .modal-q-answer {
-  font-family: var(--font-body); font-size: 13.5px; font-weight: 500; color: var(--text-dim); background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--stroke-soft); line-height: 1.5;
+  font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--text-dim); background: rgba(0,0,0,0.35); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--stroke-soft); line-height: 1.55;
+}
+.btn-table-action {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text); background: var(--brand-primary-grad); border: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.btn-table-action:hover {
+  transform: translateY(-1px); filter: brightness(1.15); box-shadow: 0 4px 12px var(--glow);
+}
+.scroll-nav-btn {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text-dim); background: rgba(0,0,0,0.3); border: 1px solid var(--stroke-soft); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+}
+.scroll-nav-btn:hover {
+  color: var(--text); border-color: var(--brand-primary); background: rgba(255,255,255,0.08);
 }
 
 </style>
@@ -520,11 +532,19 @@ footer.foot p{font-size:11.5px; color:var(--text-faint); font-family:var(--font-
       </div>
       <div class="table-controls">
         <input type="text" class="search-box" id="searchBox" placeholder="🔍 Buscar por campus, marca, matrícula ou motivo...">
+        <div style="display:flex; gap:8px;">
+          <button class="scroll-nav-btn" onclick="scrollTable(-300)">◀ Perguntas da Esquerda</button>
+          <button class="scroll-nav-btn" onclick="scrollTable(300)">Perguntas da Direita ▶</button>
+        </div>
       </div>
       <div style="overflow-x:auto;">
         <table class="data" id="dataTable">
           <thead>
             <tr>
+              <th style="width:130px; text-align:center;">
+                <span class="th-title">Perguntas</span>
+                <span class="th-question" style="text-align:center;">📋 Ver Tudo</span>
+              </th>
               <th data-key="unidade">
                 <span class="th-title">Campus / Unidade</span>
                 <span class="th-question">❓ "Em qual unidade você foi atendido?"</span>
@@ -1033,17 +1053,20 @@ function renderTable() {
   tbody.innerHTML = '';
 
   if(filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:32px; color:var(--text-faint); font-family:var(--font-mono);">Nenhum registro encontrado para exibição.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:32px; color:var(--text-faint); font-family:var(--font-mono);">Nenhum registro encontrado para exibição.</td></tr>';
     return;
   }
 
-  filtered.forEach((d) => {
+  filtered.forEach((d, idx) => {
     const brandTag = d.fonte === 'Estácio' ? 'estacio-pill' : (d.fonte === 'Wyden' ? 'wyden-pill' : 'idomed-pill');
     let motivoShort = d.motivo;
     if (motivoShort.length > 55) motivoShort = motivoShort.substring(0, 52) + '...';
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
+      <td style="text-align:center;">
+        <button class="btn-table-action" onclick="openRowQa(${idx})">👁️ Ver Perguntas</button>
+      </td>
       <td class="unit-cell">${d.unidade}</td>
       <td><span class="tag-pill ${brandTag}">${d.fonte}</span></td>
       <td><span class="tag-pill ok">${d.avaliacao} ★</span></td>
@@ -1055,6 +1078,8 @@ function renderTable() {
     `;
     tbody.appendChild(tr);
   });
+  
+  window.currentFilteredData = filtered;
 
   document.querySelectorAll('#dataTable thead th').forEach(th => {
     th.classList.toggle('sorted', th.dataset.key === sortKey);
@@ -1089,6 +1114,7 @@ document.getElementById('tabs').addEventListener('click', (e) => {
 document.querySelectorAll('#dataTable thead th').forEach(th => {
   th.addEventListener('click', () => {
     const key = th.dataset.key;
+    if(!key) return;
     if(sortKey === key){ sortDir *= -1; } else { sortKey = key; sortDir = key === 'unidade' ? 1 : -1; }
     renderTable();
   });
@@ -1140,6 +1166,20 @@ function closeQaModal() {
 document.getElementById('qaModal')?.addEventListener('click', (e) => {
   if (e.target.id === 'qaModal') closeQaModal();
 });
+
+
+function scrollTable(amount) {
+  const container = document.querySelector('#dataTable').parentElement;
+  if(container) {
+    container.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+}
+
+function openRowQa(index) {
+  if (window.currentFilteredData && window.currentFilteredData[index]) {
+    showQaModal(window.currentFilteredData[index]);
+  }
+}
 
 renderDashboard('wyden');
 </script>
