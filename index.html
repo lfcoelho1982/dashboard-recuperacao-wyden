@@ -1,9 +1,14 @@
-<!DOCTYPE html>
+# Let's rewrite the html content with the brand colors of Wyden:
+# Primary red/magenta: #d91854 or #b81c4a (Wyden logo red)
+# Background / Banner gradient elements: Deep magenta/burgundy like the screenshot (#9b1d54 to #5d1738)
+# Accent buttons: Golden/yellow (#f59e0b or #fbbf24) or orange/yellow like "Inscreva-se" (#ff8c00 / #f59e0b)
+
+html_content_updated = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Executivo - Recuperação de Crédito Wyden Unifavip</title>
+    <title>Dashboard Executivo - Recuperação de Crédito Wyden</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
@@ -11,20 +16,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .wyden-header {
+            background: linear-gradient(135deg, #78133d 0%, #a81c4a 50%, #d91854 100%);
+        }
+        .wyden-btn {
+            background-color: #f59e0b;
+        }
+        .wyden-btn:hover {
+            background-color: #d97706;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="bg-indigo-900 text-white shadow-md">
+    <header class="wyden-header text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold tracking-tight">Painel Executivo — Recuperação de Crédito</h1>
-                <p class="text-indigo-200 text-sm mt-1">Unidade: Wyden Unifavip | Atendente: Paolla Fernanda</p>
+                <div class="flex items-center space-x-3 mb-1">
+                    <span class="text-2xl font-black tracking-wider uppercase bg-white text-[#a81c4a] px-3 py-1 rounded-md shadow-sm">Wyden</span>
+                    <span class="text-xl font-bold tracking-tight">Painel Executivo — Recuperação de Crédito</span>
+                </div>
+                <p class="text-pink-100 text-sm">Unidade: Unifavip | Atendente: Paolla Fernanda</p>
             </div>
-            <div class="mt-4 md:mt-0 flex items-center space-x-3 bg-indigo-800 px-4 py-2 rounded-lg border border-indigo-700">
-                <label for="monthFilter" class="text-sm font-medium text-indigo-200">Filtrar Mês:</label>
-                <select id="monthFilter" onchange="filterData(this.value)" class="bg-indigo-900 text-white text-sm font-semibold rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-indigo-600 cursor-pointer">
+            <div class="mt-4 md:mt-0 flex items-center space-x-3 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-pink-400/30">
+                <label for="monthFilter" class="text-sm font-medium text-pink-100">Filtrar Mês:</label>
+                <select id="monthFilter" onchange="filterData(this.value)" class="bg-[#78133d] text-white text-sm font-semibold rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-amber-400 border border-pink-500 cursor-pointer">
                     <option value="geral">Visão Geral (Consolidado)</option>
                     <option value="maio">Maio</option>
                     <option value="junho">Junho</option>
@@ -41,45 +58,45 @@
         <!-- KPI Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <!-- Card 1 -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Acionado</span>
                     <h3 id="kpi-acionado" class="text-3xl font-extrabold text-slate-900 mt-2">658</h3>
                 </div>
-                <div class="mt-4 flex items-center text-xs text-indigo-600 font-medium bg-indigo-50 px-2.5 py-1 rounded-full w-fit">
+                <div class="mt-4 flex items-center text-xs text-[#a81c4a] font-medium bg-pink-50 px-2.5 py-1 rounded-full w-fit">
                     <span>Clientes / Contratos</span>
                 </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Prometido (Entrada)</span>
                     <h3 id="kpi-promessa" class="text-3xl font-extrabold text-slate-900 mt-2">R$ 822.243</h3>
                 </div>
-                <div class="mt-4 flex items-center text-xs text-amber-600 font-medium bg-amber-50 px-2.5 py-1 rounded-full w-fit">
+                <div class="mt-4 flex items-center text-xs text-amber-700 font-medium bg-amber-50 px-2.5 py-1 rounded-full w-fit">
                     <span>Acordos Firmados</span>
                 </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Recuperado</span>
                     <h3 id="kpi-recuperado" class="text-3xl font-extrabold text-emerald-600 mt-2">R$ 682.893</h3>
                 </div>
-                <div class="mt-4 flex items-center text-xs text-emerald-600 font-medium bg-emerald-50 px-2.5 py-1 rounded-full w-fit">
+                <div class="mt-4 flex items-center text-xs text-emerald-700 font-medium bg-emerald-50 px-2.5 py-1 rounded-full w-fit">
                     <span id="kpi-efetividade-badge">Efetividade: 83.05%</span>
                 </div>
             </div>
 
             <!-- Card 4 -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Quebrado</span>
                     <h3 id="kpi-quebrado" class="text-3xl font-extrabold text-rose-600 mt-2">R$ 139.350</h3>
                 </div>
-                <div class="mt-4 flex items-center text-xs text-rose-600 font-medium bg-rose-50 px-2.5 py-1 rounded-full w-fit">
+                <div class="mt-4 flex items-center text-xs text-rose-700 font-medium bg-rose-50 px-2.5 py-1 rounded-full w-fit">
                     <span>Inadimplência de Acordo</span>
                 </div>
             </div>
@@ -92,7 +109,7 @@
                     <p class="text-xs font-semibold uppercase text-slate-400">Total Negociado</p>
                     <p id="kpi-negociado" class="text-2xl font-bold text-slate-800 mt-1">556</p>
                 </div>
-                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg">
+                <div class="p-3 bg-pink-50 text-[#a81c4a] rounded-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
@@ -108,9 +125,9 @@
             <div class="bg-white rounded-xl shadow-sm p-5 border border-slate-200 flex justify-between items-center">
                 <div>
                     <p class="text-xs font-semibold uppercase text-slate-400">Taxa de Conversão</p>
-                    <p id="kpi-conversao" class="text-2xl font-bold text-indigo-600 mt-1">73.86%</p>
+                    <p id="kpi-conversao" class="text-2xl font-bold text-[#a81c4a] mt-1">73.86%</p>
                 </div>
-                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
+                <div class="p-3 bg-pink-50 text-[#a81c4a] rounded-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 </div>
             </div>
@@ -143,9 +160,9 @@
 
         <!-- Detailed Table -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+            <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
                 <h3 class="text-lg font-bold text-slate-800">Detalhamento Mensal da Operação</h3>
-                <span class="text-xs text-slate-500">Fonte: Controle ATP Wyden Unifavip</span>
+                <span class="text-xs text-slate-500 font-medium">Fonte: Controle ATP Wyden Unifavip</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -216,7 +233,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-sm text-slate-500">
-        <p>Painel Executivo desenvolvido com base nos dados oficiais da operação de Recuperação de Crédito — Wyden Unifavip (2026).</p>
+        <p>Painel Executivo desenvolvido com a identidade visual institucional Wyden — Recuperação de Crédito (2026).</p>
     </footer>
 
     <!-- JavaScript Data & Interactivity -->
@@ -291,7 +308,7 @@
         // Charts Initialization
         const months = ['Maio', 'Junho', 'Julho', 'Agosto'];
 
-        // Financial Chart
+        // Financial Chart with Wyden Brand colors
         const ctxFinancial = document.getElementById('financialChart').getContext('2d');
         const financialChart = new Chart(ctxFinancial, {
             type: 'bar',
@@ -307,7 +324,7 @@
                     {
                         label: 'Valor Recuperado',
                         data: [71353.34, 110197.75, 197564.59, 303777.47],
-                        backgroundColor: '#10b981',
+                        backgroundColor: '#d91854',
                         borderRadius: 6
                     }
                 ]
@@ -330,7 +347,7 @@
             }
         });
 
-        // Operational Chart
+        // Operational Chart with Wyden Brand colors
         const ctxOperational = document.getElementById('operationalChart').getContext('2d');
         const operationalChart = new Chart(ctxOperational, {
             type: 'line',
@@ -340,16 +357,16 @@
                     {
                         label: 'Acionado',
                         data: [79, 141, 202, 236],
-                        borderColor: '#6366f1',
-                        backgroundColor: '#6366f1',
+                        borderColor: '#a81c4a',
+                        backgroundColor: '#a81c4a',
                         tension: 0.3,
                         fill: false
                     },
                     {
                         label: 'Negociado',
                         data: [79, 107, 169, 201],
-                        borderColor: '#3b82f6',
-                        backgroundColor: '#3b82f6',
+                        borderColor: '#f59e0b',
+                        backgroundColor: '#f59e0b',
                         tension: 0.3,
                         fill: false
                     },
@@ -383,3 +400,9 @@
     </script>
 </body>
 </html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content_updated)
+
+print("Updated index.html with Wyden color palette.")
