@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Executivo - Recuperação de Crédito Wyden Unifavip</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Painel Executivo — Recuperação de Crédito</h1>
+                <p class="text-indigo-200 text-sm mt-1">Unidade: Wyden Unifavip | Atendente: Paolla Fernanda</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-3 bg-indigo-800 px-4 py-2 rounded-lg border border-indigo-700">
+                <label for="monthFilter" class="text-sm font-medium text-indigo-200">Filtrar Mês:</label>
+                <select id="monthFilter" onchange="filterData(this.value)" class="bg-indigo-900 text-white text-sm font-semibold rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-indigo-600 cursor-pointer">
+                    <option value="geral">Visão Geral (Consolidado)</option>
+                    <option value="maio">Maio</option>
+                    <option value="junho">Junho</option>
+                    <option value="julho">Julho</option>
+                    <option value="agosto">Agosto</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- KPI Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Acionado</span>
+                    <h3 id="kpi-acionado" class="text-3xl font-extrabold text-slate-900 mt-2">658</h3>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-indigo-600 font-medium bg-indigo-50 px-2.5 py-1 rounded-full w-fit">
+                    <span>Clientes / Contratos</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Prometido (Entrada)</span>
+                    <h3 id="kpi-promessa" class="text-3xl font-extrabold text-slate-900 mt-2">R$ 822.243</h3>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-amber-600 font-medium bg-amber-50 px-2.5 py-1 rounded-full w-fit">
+                    <span>Acordos Firmados</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Recuperado</span>
+                    <h3 id="kpi-recuperado" class="text-3xl font-extrabold text-emerald-600 mt-2">R$ 682.893</h3>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-emerald-600 font-medium bg-emerald-50 px-2.5 py-1 rounded-full w-fit">
+                    <span id="kpi-efetividade-badge">Efetividade: 83.05%</span>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Valor Quebrado</span>
+                    <h3 id="kpi-quebrado" class="text-3xl font-extrabold text-rose-600 mt-2">R$ 139.350</h3>
+                </div>
+                <div class="mt-4 flex items-center text-xs text-rose-600 font-medium bg-rose-50 px-2.5 py-1 rounded-full w-fit">
+                    <span>Inadimplência de Acordo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary metrics row -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-sm p-5 border border-slate-200 flex justify-between items-center">
+                <div>
+                    <p class="text-xs font-semibold uppercase text-slate-400">Total Negociado</p>
+                    <p id="kpi-negociado" class="text-2xl font-bold text-slate-800 mt-1">556</p>
+                </div>
+                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-5 border border-slate-200 flex justify-between items-center">
+                <div>
+                    <p class="text-xs font-semibold uppercase text-slate-400">Total Pago</p>
+                    <p id="kpi-pago" class="text-2xl font-bold text-slate-800 mt-1">486</p>
+                </div>
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-5 border border-slate-200 flex justify-between items-center">
+                <div>
+                    <p class="text-xs font-semibold uppercase text-slate-400">Taxa de Conversão</p>
+                    <p id="kpi-conversao" class="text-2xl font-bold text-indigo-600 mt-1">73.86%</p>
+                </div>
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Chart 1: Financial Evolution -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Evolução Financeira (R$)</h3>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Promessa vs Recuperado</span>
+                </div>
+                <div class="relative h-72">
+                    <canvas id="financialChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Operational Volume -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Volume Operacional de Acordos</h3>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Acionado / Negociado / Pago</span>
+                </div>
+                <div class="relative h-72">
+                    <canvas id="operationalChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-slate-800">Detalhamento Mensal da Operação</h3>
+                <span class="text-xs text-slate-500">Fonte: Controle ATP Wyden Unifavip</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-600 text-xs font-semibold uppercase tracking-wider">
+                            <th class="py-3 px-6">Mês</th>
+                            <th class="py-3 px-6">Acionado</th>
+                            <th class="py-3 px-6">Negociado</th>
+                            <th class="py-3 px-6">Pago</th>
+                            <th class="py-3 px-6">Promessa Entrada</th>
+                            <th class="py-3 px-6">Valor Recuperado</th>
+                            <th class="py-3 px-6">Valor Quebrado</th>
+                            <th class="py-3 px-6">Efetividade ($)</th>
+                            <th class="py-3 px-6">Conversão</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="divide-y divide-slate-200 text-sm text-slate-700">
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 font-semibold">Maio</td>
+                            <td class="py-4 px-6">79</td>
+                            <td class="py-4 px-6">79</td>
+                            <td class="py-4 px-6">79</td>
+                            <td class="py-4 px-6">R$ 71.353,34</td>
+                            <td class="py-4 px-6 text-emerald-600 font-semibold">R$ 71.353,34</td>
+                            <td class="py-4 px-6">R$ 0,00</td>
+                            <td class="py-4 px-6"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-medium">100.0%</span></td>
+                            <td class="py-4 px-6">100.0%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 font-semibold">Junho</td>
+                            <td class="py-4 px-6">141</td>
+                            <td class="py-4 px-6">107</td>
+                            <td class="py-4 px-6">98</td>
+                            <td class="py-4 px-6">R$ 174.706,30</td>
+                            <td class="py-4 px-6 text-emerald-600 font-semibold">R$ 110.197,75</td>
+                            <td class="py-4 px-6 text-rose-600">R$ 64.508,55</td>
+                            <td class="py-4 px-6"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-xs font-medium">63.1%</span></td>
+                            <td class="py-4 px-6">91.6%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 font-semibold">Julho</td>
+                            <td class="py-4 px-6">202</td>
+                            <td class="py-4 px-6">169</td>
+                            <td class="py-4 px-6">140</td>
+                            <td class="py-4 px-6">R$ 231.312,99</td>
+                            <td class="py-4 px-6 text-emerald-600 font-semibold">R$ 197.564,59</td>
+                            <td class="py-4 px-6 text-rose-600">R$ 33.748,40</td>
+                            <td class="py-4 px-6"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-medium">85.4%</span></td>
+                            <td class="py-4 px-6">82.8%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 font-semibold">Agosto</td>
+                            <td class="py-4 px-6">236</td>
+                            <td class="py-4 px-6">201</td>
+                            <td class="py-4 px-6">169</td>
+                            <td class="py-4 px-6">R$ 344.870,49</td>
+                            <td class="py-4 px-6 text-emerald-600 font-semibold">R$ 303.777,47</td>
+                            <td class="py-4 px-6 text-rose-600">R$ 41.093,02</td>
+                            <td class="py-4 px-6"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-medium">88.1%</span></td>
+                            <td class="py-4 px-6">84.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-sm text-slate-500">
+        <p>Painel Executivo desenvolvido com base nos dados oficiais da operação de Recuperação de Crédito — Wyden Unifavip (2026).</p>
+    </footer>
+
+    <!-- JavaScript Data & Interactivity -->
+    <script>
+        const dataStore = {
+            geral: {
+                acionado: 658,
+                negociado: 556,
+                pago: 486,
+                promessa: "R$ 822.243",
+                recuperado: "R$ 682.893",
+                quebrado: "R$ 139.350",
+                conversao: "73.86%",
+                efetividadeBadge: "Efetividade: 83.05%"
+            },
+            maio: {
+                acionado: 79,
+                negociado: 79,
+                pago: 79,
+                promessa: "R$ 71.353",
+                recuperado: "R$ 71.353",
+                quebrado: "R$ 0",
+                conversao: "100.0%",
+                efetividadeBadge: "Efetividade: 100.0%"
+            },
+            junho: {
+                acionado: 141,
+                negociado: 107,
+                pago: 98,
+                promessa: "R$ 174.706",
+                recuperado: "R$ 110.198",
+                quebrado: "R$ 64.509",
+                conversao: "91.59%",
+                efetividadeBadge: "Efetividade: 63.08%"
+            },
+            julho: {
+                acionado: 202,
+                negociado: 169,
+                pago: 140,
+                promessa: "R$ 231.313",
+                recuperado: "R$ 197.565",
+                quebrado: "R$ 33.748",
+                conversao: "82.84%",
+                efetividadeBadge: "Efetividade: 85.41%"
+            },
+            agosto: {
+                acionado: 236,
+                negociado: 201,
+                pago: 169,
+                promessa: "R$ 344.870",
+                recuperado: "R$ 303.777",
+                quebrado: "R$ 41.093",
+                conversao: "84.08%",
+                efetividadeBadge: "Efetividade: 88.08%"
+            }
+        };
+
+        function filterData(month) {
+            const d = dataStore[month];
+            if (!d) return;
+
+            document.getElementById('kpi-acionado').innerText = d.acionado;
+            document.getElementById('kpi-negociado').innerText = d.negociado;
+            document.getElementById('kpi-pago').innerText = d.pago;
+            document.getElementById('kpi-promessa').innerText = d.promessa;
+            document.getElementById('kpi-recuperado').innerText = d.recuperado;
+            document.getElementById('kpi-quebrado').innerText = d.quebrado;
+            document.getElementById('kpi-conversao').innerText = d.conversao;
+            document.getElementById('kpi-efetividade-badge').innerText = d.efetividadeBadge;
+        }
+
+        // Charts Initialization
+        const months = ['Maio', 'Junho', 'Julho', 'Agosto'];
+
+        // Financial Chart
+        const ctxFinancial = document.getElementById('financialChart').getContext('2d');
+        const financialChart = new Chart(ctxFinancial, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Promessa de Entrada',
+                        data: [71353.34, 174706.30, 231312.99, 344870.49],
+                        backgroundColor: '#cbd5e1',
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Valor Recuperado',
+                        data: [71353.34, 110197.75, 197564.59, 303777.47],
+                        backgroundColor: '#10b981',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#f1f5f9' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Operational Chart
+        const ctxOperational = document.getElementById('operationalChart').getContext('2d');
+        const operationalChart = new Chart(ctxOperational, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Acionado',
+                        data: [79, 141, 202, 236],
+                        borderColor: '#6366f1',
+                        backgroundColor: '#6366f1',
+                        tension: 0.3,
+                        fill: false
+                    },
+                    {
+                        label: 'Negociado',
+                        data: [79, 107, 169, 201],
+                        borderColor: '#3b82f6',
+                        backgroundColor: '#3b82f6',
+                        tension: 0.3,
+                        fill: false
+                    },
+                    {
+                        label: 'Pago',
+                        data: [79, 98, 140, 169],
+                        borderColor: '#10b981',
+                        backgroundColor: '#10b981',
+                        tension: 0.3,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#f1f5f9' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
