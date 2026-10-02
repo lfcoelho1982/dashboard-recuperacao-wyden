@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Executivo Presidencial - Recuperação de Crédito Wyden</title>
+    <title>Painel Executivo - Recuperação de Crédito Wyden</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
@@ -13,6 +13,13 @@
         body { font-family: 'Inter', sans-serif; }
         .wyden-header {
             background: linear-gradient(135deg, #78133d 0%, #a81c4a 50%, #d91854 100%);
+        }
+        .chart-container {
+            transition: all 0.3s ease-in-out;
+        }
+        .chart-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -24,9 +31,9 @@
             <div>
                 <div class="flex items-center space-x-3 mb-1">
                     <span class="text-2xl font-black tracking-wider uppercase bg-white text-[#a81c4a] px-3 py-1 rounded-md shadow-sm">Wyden</span>
-                    <span class="text-xl font-bold tracking-tight">Painel Executivo Presidencial — Recuperação de Crédito</span>
+                    <span class="text-xl font-bold tracking-tight">Painel Executivo — Recuperação de Crédito & Operação</span>
                 </div>
-                <p id="header-subtitle" class="text-pink-100 text-sm">Visão Estratégica: Unifavip & Unifacid | Expansão de Projeto</p>
+                <p id="header-subtitle" class="text-pink-100 text-sm">Visão Estratégica: Unifavip & Unifacid</p>
             </div>
             
             <!-- Filters -->
@@ -56,24 +63,6 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
-
-        <!-- Executive Summary Banner -->
-        <div class="bg-gradient-to-r from-slate-900 to-[#78133d] rounded-xl p-6 text-white mb-8 shadow-md flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <h2 class="text-lg font-bold tracking-wide text-amber-400 uppercase">Sumário Executivo para Presidência</h2>
-                <p class="text-slate-200 text-sm mt-1">Análise consolidada para decisão de expansão do projeto de recuperação de crédito nas unidades.</p>
-            </div>
-            <div class="mt-4 md:mt-0 flex gap-4 text-center">
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
-                    <span class="block text-xs text-slate-300">Volume Total Acionado</span>
-                    <span id="banner-acionado" class="text-xl font-bold">976</span>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
-                    <span class="block text-xs text-slate-300">Efetividade Global</span>
-                    <span id="banner-efetividade" class="text-xl font-bold text-emerald-400">77.65%</span>
-                </div>
-            </div>
-        </div>
 
         <!-- KPI Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -165,7 +154,7 @@
         <!-- Charts Section -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             <!-- Chart 1: Financial Evolution -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 chart-container">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-base font-bold text-slate-800">Evolução Financeira (R$)</h3>
                     <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Promessa vs Recup.</span>
@@ -176,7 +165,7 @@
             </div>
 
             <!-- Chart 2: Operational Volume -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 chart-container">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-base font-bold text-slate-800">Volume Operacional</h3>
                     <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Acionado / Neg. / Pago</span>
@@ -186,10 +175,10 @@
                 </div>
             </div>
 
-            <!-- Chart 3: Executive Comparative by Unit (Presidential View) -->
-            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+            <!-- Chart 3: Executive Comparative by Unit -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200 chart-container">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-bold text-slate-800">Comparativo Executivo Unidades</h3>
+                    <h3 class="text-base font-bold text-slate-800">Comparativo por Unidade</h3>
                     <span class="text-xs bg-amber-50 text-amber-700 font-semibold px-2 py-0.5 rounded">Recuperado (R$)</span>
                 </div>
                 <div class="relative h-72">
@@ -202,10 +191,10 @@
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
                 <div>
-                    <h3 class="text-lg font-bold text-slate-800">Detalhamento da Operação & Análise de Viabilidade</h3>
-                    <p class="text-xs text-slate-500 mt-0.5">Indicadores chave para embasamento da expansão estratégica do projeto</p>
+                    <h3 class="text-lg font-bold text-slate-800">Detalhamento da Operação</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Indicadores chave por unidade e mês de apuração</p>
                 </div>
-                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-3 py-1 rounded-full">Status: Apto para Expansão</span>
+                <span class="text-xs bg-pink-100 text-[#a81c4a] font-semibold px-3 py-1 rounded-full">Atualizado 2026</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -235,7 +224,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-sm text-slate-500">
-        <p>Painel Executivo Presidencial Multi-Unidade Wyden — Recuperação de Crédito & Expansão de Projetos (2026).</p>
+        <p>Painel Executivo Multi-Unidade Wyden — Recuperação de Crédito & Operação (2026).</p>
     </footer>
 
     <!-- JavaScript Data & Logic -->
@@ -265,6 +254,31 @@
 
         let financialChart, operationalChart, comparativeChart;
 
+        // Common interactive tooltip options for Chart.js reactivity
+        const commonTooltipOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, font: { weight: '600' } } },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 13 },
+                    padding: 12,
+                    cornerRadius: 8,
+                    displayColors: true
+                }
+            },
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                x: { grid: { display: false } }
+            }
+        };
+
         function initCharts() {
             const ctxFin = document.getElementById('financialChart').getContext('2d');
             financialChart = new Chart(ctxFin, {
@@ -272,16 +286,11 @@
                 data: {
                     labels: ['Maio', 'Junho', 'Julho', 'Agosto'],
                     datasets: [
-                        { label: 'Promessa', data: [0,0,0,0], backgroundColor: '#cbd5e1', borderRadius: 4 },
-                        { label: 'Recuperado', data: [0,0,0,0], backgroundColor: '#d91854', borderRadius: 4 }
+                        { label: 'Promessa', data: [0,0,0,0], backgroundColor: '#cbd5e1', hoverBackgroundColor: '#94a3b8', borderRadius: 4 },
+                        { label: 'Recuperado', data: [0,0,0,0], backgroundColor: '#d91854', hoverBackgroundColor: '#be123c', borderRadius: 4 }
                     ]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } },
-                    scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }
-                }
+                options: commonTooltipOptions
             });
 
             const ctxOp = document.getElementById('operationalChart').getContext('2d');
@@ -290,17 +299,12 @@
                 data: {
                     labels: ['Maio', 'Junho', 'Julho', 'Agosto'],
                     datasets: [
-                        { label: 'Acionado', data: [0,0,0,0], borderColor: '#a81c4a', backgroundColor: '#a81c4a', tension: 0.3, fill: false },
-                        { label: 'Negociado', data: [0,0,0,0], borderColor: '#f59e0b', backgroundColor: '#f59e0b', tension: 0.3, fill: false },
-                        { label: 'Pago', data: [0,0,0,0], borderColor: '#10b981', backgroundColor: '#10b981', tension: 0.3, fill: false }
+                        { label: 'Acionado', data: [0,0,0,0], borderColor: '#a81c4a', backgroundColor: '#a81c4a', borderWidth: 3, pointRadius: 5, pointHoverRadius: 8, tension: 0.3, fill: false },
+                        { label: 'Negociado', data: [0,0,0,0], borderColor: '#f59e0b', backgroundColor: '#f59e0b', borderWidth: 3, pointRadius: 5, pointHoverRadius: 8, tension: 0.3, fill: false },
+                        { label: 'Pago', data: [0,0,0,0], borderColor: '#10b981', backgroundColor: '#10b981', borderWidth: 3, pointRadius: 5, pointHoverRadius: 8, tension: 0.3, fill: false }
                     ]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } },
-                    scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }
-                }
+                options: commonTooltipOptions
             });
 
             const ctxComp = document.getElementById('comparativeChart').getContext('2d');
@@ -309,16 +313,11 @@
                 data: {
                     labels: ['Maio', 'Junho', 'Julho', 'Agosto'],
                     datasets: [
-                        { label: 'Unifavip (Paolla)', data: [0,0,0,0], backgroundColor: '#a81c4a', borderRadius: 4 },
-                        { label: 'Unifacid (Pedro)', data: [0,0,0,0], backgroundColor: '#f59e0b', borderRadius: 4 }
+                        { label: 'Unifavip (Paolla)', data: [0,0,0,0], backgroundColor: '#a81c4a', hoverBackgroundColor: '#be123c', borderRadius: 4 },
+                        { label: 'Unifacid (Pedro)', data: [0,0,0,0], backgroundColor: '#f59e0b', hoverBackgroundColor: '#d97706', borderRadius: 4 }
                     ]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } },
-                    scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }
-                }
+                options: commonTooltipOptions
             });
         }
 
@@ -366,9 +365,6 @@
             document.getElementById('kpi-renovacao').innerText = renovacao.toLocaleString('pt-BR');
             document.getElementById('kpi-conversao').innerText = formatPercent(conversao);
             document.getElementById('kpi-efetividade-badge').innerText = 'Efetividade: ' + formatPercent(efetividade);
-
-            document.getElementById('banner-acionado').innerText = acionado.toLocaleString('pt-BR');
-            document.getElementById('banner-efetividade').innerText = formatPercent(efetividade);
 
             // Update Subtitle
             let unitText = unit === 'geral' ? 'Visão Consolidada: Unifavip & Unifacid' : (unit === 'unifavip' ? 'Unidade: Unifavip (Atendente: Paolla Fernanda)' : 'Unidade: Unifacid (Atendente: Pedro Henrique)');
@@ -420,7 +416,6 @@
         function updateChartsData(unit, month) {
             const monthsList = ['Maio', 'Junho', 'Julho', 'Agosto'];
             
-            // Financial & Operational datasets
             let promessaData = [0,0,0,0];
             let recuperadoData = [0,0,0,0];
             let acionadoData = [0,0,0,0];
@@ -429,7 +424,7 @@
 
             let datasets = unit === 'geral' ? ['unifavip', 'unifacid'] : [unit];
 
-            monthsList.forEach((m, idx) => {
+            monthsList.format = monthsList.forEach((m, idx) => {
                 datasets.forEach(u => {
                     let found = rawData[u].find(item => item.mes === m);
                     if (found) {
@@ -451,7 +446,6 @@
             operationalChart.data.datasets[2].data = pagoData;
             operationalChart.update();
 
-            // Comparative Chart (Unifavip vs Unifacid)
             let favipRec = rawData.unifavip.map(item => item.recuperado);
             let facidRec = rawData.unifacid.map(item => item.recuperado);
 
